@@ -7,7 +7,10 @@
             <div class="text-center my-5">
                 <h1 class="fw-bolder">Welcome to Blog Home!</h1>
                 <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
-                <li class="nav-item"><a class="nav-link" href="{{route('posts')}}">Write Your Post</a></li>
+                <a class="nav-link" href="{{route('posts')}}">
+                    <i class="fa fa-pencil"></i>
+                    <span style="color: orange; font-size: 1.5em;">Write Your Post</span>
+                </a>
             </div>
         </div>
     </header>

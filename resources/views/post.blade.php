@@ -94,14 +94,14 @@
                             </div>
                             <div class="label--desc">Upload your post picture. Max file size 50 MB</div>
                         </div>
-                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
 
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
                     </div>
                 </form>
             </div>
-            <div class="card-footer">
-                <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
-            </div>
+
         </div>
     </div>
 </div>
