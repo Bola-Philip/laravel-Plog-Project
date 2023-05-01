@@ -7,7 +7,6 @@
             <div class="text-center my-5">
                 <h1 class="fw-bolder">Welcome to Blog Home!</h1>
                 <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
-                <li class="nav-item"><a class="nav-link" href="{{route('posts')}}">Write Your Post</a></li>
             </div>
         </div>
     </header>
@@ -32,11 +31,11 @@
                                         <p class="card-text">{{$posts -> post_text}}</p>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <a class="btn btn-primary" href="#!">Read more →</a>
+                                                <a class="btn btn-primary" href="{{route('post.show', $posts->id)}}">Read more →</a>
                                             </div>
                                             <div class="col-sm-6 d-flex justify-content-end">
-                                                <a class="btn btn-success float-right mr-2" href="">Edit</a>
-                                                <form action="" method="POST">
+                                                <a class="btn btn-success float-right mr-2" href="{{route('adminEdit',$posts->id)}}">Edit</a>
+                                                <form action="{{route('adminDelete', $posts->id)}}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger float-right ml-2" style="margin-left: 10px;">Delete</button>
@@ -87,10 +86,10 @@
                             <div class="col-sm-12">
                                 <ul class="list-unstyled mb-0">
                                     @foreach($categories as $category)
-                                        <li>
+                                        <li class="mb-2">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <a href="{{ route('home')}}?category_id={{$category->id}}">{{ $category->name }}</a>
+                                                    <a href="{{ route('admin')}}?category_id={{$category->id}}">{{ $category->name }}</a>
                                                 </div>
                                                 <div>
                                                     <form action="" method="POST">

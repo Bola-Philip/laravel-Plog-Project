@@ -16,50 +16,26 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
     <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="{{asset('css/main.css')}}" rel="stylesheet" media="all">
 </head>
 
 <body>
 <div class="page-wrapper bg-dark p-t-100 p-b-50">
     <div class="wrapper wrapper--w900">
         <div class="card card-6">
+            @foreach($category_post as $posts)
             <div class="card-heading">
                 <h2 class="title">Add Post</h2>
             </div>
             <div class="card-body">
-                <form method="GET" action="{{route('createPost')}}">
+                <form method="POST" action="{{route('adminUpdate',$posts->id)}}">
+                    @csrf
                     <div class="form-row">
                         <div class="name">Title</div>
                         <div class="value">
-                            <input class="input--style-6" type="text" name="title">
+                            <input class="input--style-6" type="text" name="title" value="{{$posts->title}}">
                         </div>
                     </div>
-
-
-
-{{--                    <div class="form-group">--}}
-{{--                        <label for="exampleFormControlSelect1">Example select</label>--}}
-{{--                        <input class="text" type="email" name="email" placeholder="example@email.com" >--}}
-{{--                        <select class="form-control" id="exampleFormControlSelect1">--}}
-{{--                            <option>1</option>--}}
-{{--                            <option>2</option>--}}
-{{--                            <option>3</option>--}}
-{{--                            <option>4</option>--}}
-{{--                            <option>5</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-
-
-
-{{--                    <div class="form-row">--}}
-{{--                        <div class="name">Category</div>--}}
-{{--                        <div class="value">--}}
-{{--                            <div class="input-group">--}}
-{{--                                <input class="input--style-6" type="email" name="category" placeholder="example@email.com" >--}}
-{{--                             </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
 
 
                     <div class="form-row">
@@ -80,7 +56,7 @@
                         <div class="name">Text</div>
                         <div class="value">
                             <div class="input-group">
-                                <textarea class="textarea--style-6" name="post_text" placeholder="post content"></textarea>
+                                <textarea class="textarea--style-6" name="post_text" placeholder="post content">{{$posts->post_text}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -94,14 +70,15 @@
                             </div>
                             <div class="label--desc">Upload your post picture. Max file size 50 MB</div>
                         </div>
-                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
+                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Update</button>
 
                     </div>
                 </form>
             </div>
             <div class="card-footer">
-                <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
+                <button class="btn btn--radius-2 btn--blue-2" type="submit">Update</button>
             </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -111,7 +88,7 @@
 
 
 <!-- Main JS-->
-<script src="js/global.js"></script>
+<script src="{{asset('js/global.js')}}"></script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 

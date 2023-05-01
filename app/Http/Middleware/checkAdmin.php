@@ -19,9 +19,10 @@ class checkAdmin
     {
         $hashedPassword = Hash::make($request->password);
         if (!Auth::guard('admin') -> attempt(['email' => $request->email , 'password' => $request->password])){
-            return dd($request->all());
+            dd($request->all());
+            return back() -> withInput($request->only('email'));
         }
-        return redirect() -> intended('admin');
-        //return $next($request);
+        //return redirect() -> intended('admin');
+        return $next($request);
     }
 }

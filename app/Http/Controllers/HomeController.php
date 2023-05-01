@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -44,5 +45,16 @@ class HomeController extends Controller
             -> latest()
             ->get();
         return view('post', compact('categories','post'));
+    }
+
+    public function createPost(Request $request)
+    {
+        $post_id = Post::create([
+            'title' => $request -> title,
+            'post_text' => $request -> post_text,
+            'user_id' => Auth::user()->id,
+        ]);
+        $find_post = Post::find($post_id -> id);
+        $find_post -> categories() -> sync($request -> categories);
     }
 }

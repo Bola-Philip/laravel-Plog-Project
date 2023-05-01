@@ -51,9 +51,13 @@
                     @else
 
 
+                        @if(Auth::guard('admin')->check())
+                            <li class="nav-item"><a class="nav-link" href="{{route('admin')}}">Home</a></li>
+                        @else
+                            <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
+                        @endif
 
-                        <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('about')}}">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('about')}}">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Contact</a></li>
 
 

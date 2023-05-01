@@ -8,7 +8,7 @@
                 <div class="card-header">Admin Login</div>
 
                 <div class="card-body">
-                    <form method="get" action="{{ route('admin') }}">
+                    <form method="POST" action="{{ route('check.admin.login') }}">
                         @csrf
 
                         <div class="row mb-3">

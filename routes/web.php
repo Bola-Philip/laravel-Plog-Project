@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('home1', [\App\Http\Controllers\HomeController1::class, 'index'])
-    ->name('home1');
+Route::get('createPost', [\App\Http\Controllers\HomeController::class, 'createPost'])
+    ->name('createPost');
 
 Route::get('post/{post}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.show');
 
@@ -36,6 +36,13 @@ Route::get('/posts', [App\Http\Controllers\HomeController::class, 'posts'])->nam
 
 Route::get('admin/login', 'App\Http\Controllers\adminController@adminLogin') -> name('admin.login');
 Route::get('admin', 'App\Http\Controllers\adminController@index')->middleware('auth:admin')-> name('admin');
+Route::post('admin/check', 'App\Http\Controllers\adminController@checkAdminLogin') ->middleware('checkAdmin')-> name('check.admin.login');
 
-Route::post('admin/check', 'App\Http\Controllers\adminController@checkAdminLogin')->middleware('checkAdmin')->name('check.admin.login');
 
+Route::get('edit/{post_id}', 'App\Http\Controllers\adminController@editData')-> name('adminEdit');
+Route::post('update/{post_id}', 'App\Http\Controllers\adminController@updateData')-> name('adminUpdate');
+Route::delete('delete/{post_id}', 'App\Http\Controllers\adminController@deleteData')-> name('adminDelete');
+
+
+Route::get('convert', function () {
+})->name('contact');

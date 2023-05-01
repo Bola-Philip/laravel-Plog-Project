@@ -18,6 +18,7 @@
             <div class="col-lg-8">
                 <!-- Featured blog post-->
                 <!-- Nested row for non-featured blog posts-->
+
                 <div class="row">
                     @foreach($category_post as $categories_posts)
                         @foreach($categories_posts->posts as $posts)
@@ -29,13 +30,28 @@
                                         <div class="small text-muted">{{$posts -> created_at}}</div>
                                         <h2 class="card-title h4">{{$posts -> title}}</h2>
                                         <p class="card-text">{{$posts -> post_text}}</p>
-                                        <a class="btn btn-primary" href="#!">Read more →</a>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a class="btn btn-primary" href="{{route('post.show', $posts->id)}}">Read more →</a>
+                                            </div>
+                                            @if(Auth::user()->id == $posts ->user_id)
+                                            <div class="col-sm-6 d-flex justify-content-end">
+                                                <a class="btn btn-success float-right mr-2" href="{{route('adminEdit',$posts->id)}}">Edit</a>
+                                                <form action="{{route('adminDelete', $posts->id)}}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger float-right ml-2" style="margin-left: 10px;">Delete</button>
+                                                </form>
+                                            </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     @endforeach
                 </div>
+
                 <!-- Pagination-->
                 <nav aria-label="Pagination">
                     <hr class="my-0" />
