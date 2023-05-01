@@ -71,8 +71,14 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                     </div>
 
+
+                    <style>
+                        select[name="categories[]"] option {
+                            padding: 5px 10px;
+                        }
+                    </style>
 
 
 
