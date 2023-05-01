@@ -47,6 +47,12 @@
                             </div>
                         </div>
 
+                        <style>
+                            select[name="categories[]"] option {
+                                padding: 5px 10px;
+                            }
+                        </style>
+
                         <div class="form-row">
                             <div class="name">Text</div>
                             <div class="value">
