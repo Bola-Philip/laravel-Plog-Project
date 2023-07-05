@@ -27,7 +27,8 @@
                 <h2 class="title">Add Post</h2>
             </div>
             <div class="card-body">
-                <form method="GET" action="{{route('createPost')}}">
+                <form method="POST" action="{{route('createPost')}}" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-row">
                         <div class="name">Title</div>
                         <div class="value">
@@ -94,7 +95,7 @@
                         <div class="name">Upload Picture</div>
                         <div class="value">
                             <div class="input-group js-input-file">
-                                <input class="input-file" type="file" name="file_cv" id="file">
+                                <input class="input-file" type="file" name="post_image" id="file">
                                 <label class="label--desc" for="file">Choose file</label>
                                 <span class="input-file__info">No file chosen</span>
                             </div>

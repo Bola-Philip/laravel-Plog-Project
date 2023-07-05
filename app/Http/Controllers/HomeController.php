@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\Post;
+use App\Traits\postPicture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    use postPicture;
     /**yo
      * Create a new controller instance.
      *
@@ -49,10 +51,14 @@ class HomeController extends Controller
 
     public function createPost(Request $request)
     {
+
+        $image_name = $this -> postImage($request->post_image);
+
         $post_id = Post::create([
             'title' => $request -> title,
             'post_text' => $request -> post_text,
             'user_id' => Auth::user()->id,
+            'post_image' => $image_name,
         ]);
         $find_post = Post::find($post_id -> id);
         $find_post -> categories() -> sync($request -> categories);

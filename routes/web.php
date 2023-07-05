@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('createPost', [\App\Http\Controllers\HomeController::class, 'createPost'])
+Route::post('createPost', [\App\Http\Controllers\HomeController::class, 'createPost'])
     ->name('createPost');
 
 Route::get('post/{post}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.show');
@@ -43,6 +43,3 @@ Route::get('edit/{post_id}', 'App\Http\Controllers\adminController@editData')-> 
 Route::post('update/{post_id}', 'App\Http\Controllers\adminController@updateData')-> name('adminUpdate');
 Route::delete('delete/{post_id}', 'App\Http\Controllers\adminController@deleteData')-> name('adminDelete');
 
-
-Route::get('convert', function () {
-})->name('contact');
